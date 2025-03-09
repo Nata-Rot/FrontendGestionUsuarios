@@ -8,28 +8,28 @@
   </template>
   
   <script setup>
-  import LoginForm from '../components/LoginForm.vue';
+    import LoginForm from '../components/LoginForm.vue';
   </script>
   
   <style scoped>
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f5f7fa;
-  }
-  
-  .login-box {
-    width: 100%;
-    max-width: 500px;
-    padding: 2rem;
-  }
-  
-  .app-title {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-    font-size: 1.75rem;
-  }
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f7fa;
+    }
+    
+    .login-box {
+      width: 100%;
+      max-width: 500px;
+      padding: 2rem;
+    }
+    
+    .app-title {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+      font-size: 1.75rem;
+    }
   </style>

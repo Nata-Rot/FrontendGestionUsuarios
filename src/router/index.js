@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/LoginView.vue';
-import UserManagementView from '../views/UserManagementView.vue';
 
 const routes = [
   {
@@ -16,7 +15,7 @@ const routes = [
   {
     path: '/gestion-usuarios',
     name: 'user-management',
-    component: UserManagementView,
+    component: LoginView,
     meta: { requiresAuth: true }
   }
 ];

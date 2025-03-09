@@ -49,130 +49,130 @@
   </template>
   
   <script setup>
-  import { reactive, ref } from 'vue';
-  import { useAuthStore } from '../stores/auth';
-  
-  const authStore = useAuthStore();
-  
-  const form = reactive({
-    correoElectronico: '',
-    contrasena: ''
-  });
-  
-  const validationErrors = reactive({
-    correoElectronico: '',
-    contrasena: ''
-  });
-  
-  const validateForm = () => {
-    let isValid = true;
+    import { reactive, ref } from 'vue';
+    import { useAuthStore } from '../stores/auth';
     
-    if (!form.correoElectronico) {
-      validationErrors.correoElectronico = 'El correo electrónico es requerido';
-      isValid = false;
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correoElectronico)) {
-      validationErrors.correoElectronico = 'Ingrese un correo electrónico válido';
-      isValid = false;
-    } else {
-      validationErrors.correoElectronico = '';
-    }
+    const authStore = useAuthStore();
     
-    if (!form.contrasena) {
-      validationErrors.contrasena = 'La contraseña es requerida';
-      isValid = false;
-    } else if (form.contrasena.length < 6) {
-      validationErrors.contrasena = 'La contraseña debe tener al menos 6 caracteres';
-      isValid = false;
-    } else {
-      validationErrors.contrasena = '';
-    }
+    const form = reactive({
+      correoElectronico: '',
+      contrasena: ''
+    });
     
-    return isValid;
-  };
-  
-  const handleSubmit = async () => {
-    if (!validateForm()) return;
+    const validationErrors = reactive({
+      correoElectronico: '',
+      contrasena: ''
+    });
     
-    try {
-      await authStore.login(form);
-    } catch (error) {
-      console.error('Error en el inicio de sesión:', error);
-    }
-  };
+    const validateForm = () => {
+      let isValid = true;
+      
+      if (!form.correoElectronico) {
+        validationErrors.correoElectronico = 'El correo electrónico es requerido';
+        isValid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correoElectronico)) {
+        validationErrors.correoElectronico = 'Ingrese un correo electrónico válido';
+        isValid = false;
+      } else {
+        validationErrors.correoElectronico = '';
+      }
+      
+      if (!form.contrasena) {
+        validationErrors.contrasena = 'La contraseña es requerida';
+        isValid = false;
+      } else if (form.contrasena.length < 6) {
+        validationErrors.contrasena = 'La contraseña debe tener al menos 6 caracteres';
+        isValid = false;
+      } else {
+        validationErrors.contrasena = '';
+      }
+      
+      return isValid;
+    };
+    
+    const handleSubmit = async () => {
+      if (!validateForm()) return;
+      
+      try {
+        await authStore.login(form);
+      } catch (error) {
+        console.error('Error en el inicio de sesión:', error);
+      }
+    };
   </script>
   
   <style scoped>
-  .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .form-title {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  
-  input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  input.error {
-    border-color: #e74c3c;
-  }
-  
-  .error-text {
-    display: block;
-    color: #e74c3c;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-  }
-  
-  .error-message {
-    background-color: #fdecea;
-    color: #e74c3c;
-    padding: 0.75rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-  }
-  
-  .btn-submit {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .btn-submit:hover {
-    background-color: #2980b9;
-  }
-  
-  .btn-submit:disabled {
-    background-color: #95a5a6;
-    cursor: not-allowed;
-  }
+    .login-form {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+    
+    .form-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    input.error {
+      border-color: #e74c3c;
+    }
+    
+    .error-text {
+      display: block;
+      color: #e74c3c;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+    }
+    
+    .error-message {
+      background-color: #fdecea;
+      color: #e74c3c;
+      padding: 0.75rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    
+    .btn-submit {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    
+    .btn-submit:hover {
+      background-color: #2980b9;
+    }
+    
+    .btn-submit:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+    }
   </style>
