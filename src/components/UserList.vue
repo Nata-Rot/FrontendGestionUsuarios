@@ -1,4 +1,3 @@
-<!-- src/components/UserList.vue -->
 <template>
     <div class="user-list-container">
       <div class="list-header">

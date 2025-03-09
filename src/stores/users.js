@@ -1,4 +1,3 @@
-// src/stores/users.js
 import { defineStore } from 'pinia';
 import { userService } from '../services/api';
 
@@ -102,7 +101,6 @@ export const useUserStore = defineStore('users', {
   }
 });
 
-// Función auxiliar para determinar el color según el puntaje
 function getPuntajeColor(puntaje) {
   if (puntaje >= 60) return 'green';
   if (puntaje >= 30) return 'orange';

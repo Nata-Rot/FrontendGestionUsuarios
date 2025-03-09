@@ -9,6 +9,5 @@
   </script>
   
   <style scoped>
-  /* Agrega estilos si es necesario */
   </style>
   

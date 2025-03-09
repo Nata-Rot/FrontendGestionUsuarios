@@ -1,4 +1,3 @@
-<!-- src/components/LoginForm.vue -->
 <template>
     <div class="login-form">
       <h2 class="form-title">Iniciar Sesión</h2>
@@ -68,7 +67,6 @@
   const validateForm = () => {
     let isValid = true;
     
-    // Validar correo
     if (!form.correoElectronico) {
       validationErrors.correoElectronico = 'El correo electrónico es requerido';
       isValid = false;
@@ -79,7 +77,6 @@
       validationErrors.correoElectronico = '';
     }
     
-    // Validar contraseña
     if (!form.contrasena) {
       validationErrors.contrasena = 'La contraseña es requerida';
       isValid = false;

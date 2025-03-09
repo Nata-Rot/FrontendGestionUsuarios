@@ -1,11 +1,9 @@
-// src/stores/auth.js
 import { defineStore } from 'pinia';
 import { authService } from '../services/api';
 import router from '../router';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
-    // Usuario actual
     user: JSON.parse(localStorage.getItem('user')) || null,
     token: localStorage.getItem('token') || null,
     loading: false,

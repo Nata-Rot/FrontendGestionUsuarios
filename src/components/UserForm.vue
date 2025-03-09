@@ -1,4 +1,3 @@
-<!-- src/components/UserForm.vue -->
 <template>
     <div class="user-form">
       <h3 class="form-title">{{ isEditing ? 'Editar Usuario' : 'Crear Nuevo Usuario' }}</h3>
@@ -145,7 +144,6 @@
   const validateForm = () => {
     let isValid = true;
     
-    // Validar nombre
     if (!form.nombre) {
       validationErrors.nombre = 'El nombre es requerido';
       isValid = false;
@@ -153,7 +151,6 @@
       validationErrors.nombre = '';
     }
     
-    // Validar apellidos
     if (!form.apellidos) {
       validationErrors.apellidos = 'Los apellidos son requeridos';
       isValid = false;
@@ -161,7 +158,6 @@
       validationErrors.apellidos = '';
     }
     
-    // Validar cédula si no está editando
     if (!isEditing.value && !form.cedula) {
       validationErrors.cedula = 'La cédula es requerida';
       isValid = false;
@@ -169,7 +165,6 @@
       validationErrors.cedula = '';
     }
     
-    // Validar correo
     if (!form.correoElectronico) {
       validationErrors.correoElectronico = 'El correo electrónico es requerido';
       isValid = false;
@@ -180,7 +175,6 @@
       validationErrors.correoElectronico = '';
     }
     
-    // Validar contraseña si no está editando
     if (!isEditing.value) {
       if (!form.contrasena) {
         validationErrors.contrasena = 'La contraseña es requerida';

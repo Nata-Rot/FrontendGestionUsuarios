@@ -1,4 +1,3 @@
-// src/router/index.js
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/LoginView.vue';
 import UserManagementView from '../views/UserManagementView.vue';
@@ -27,7 +26,6 @@ const router = createRouter({
   routes
 });
 
-// Guardia de navegación para proteger rutas
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token');
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
