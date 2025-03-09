@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginView from '../views/LoginView.vue';
+import UserListView from '../views/UserListView.vue'; // Importar la vista, no el componente
 
 const routes = [
   {
@@ -13,26 +14,25 @@ const routes = [
     meta: { requiresAuth: false }
   },
   {
-    path: '/gestion-usuarios',
+    path: '/users',
     name: 'user-management',
-    component: LoginView,
+    component: UserListView, // Usar la vista que contiene el componente
     meta: { requiresAuth: true }
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes
 });
 
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-
-  if (requiresAuth && !token) {
+  const isAuthenticated = localStorage.getItem('token') !== null; // Usar 'token' consistentemente
+    
+  if (to.meta.requiresAuth && !isAuthenticated) {
     next('/login');
-  } else if (to.path === '/login' && token) {
-    next('/gestion-usuarios');
+  } else if (to.path === '/login' && isAuthenticated) {
+    next('/users'); // Usar la ruta correcta
   } else {
     next();
   }
